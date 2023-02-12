@@ -1,3 +1,10 @@
+#[allow(unused)]
+
+mod compress;
+
 fn main() {
-    println!("Hello, world!");
+
+    let data = compress::generate_dir_assets("test");
+    println!("{}", data);
+
 }
