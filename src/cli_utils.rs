@@ -5,7 +5,7 @@ lazy_static::lazy_static! {
     static ref BUILD_BRANCH_NAME: String = run_command("git", vec!["rev-parse", "--abbrev-ref", "HEAD"]).replace("\n", "");
     static ref BUILD_COMMIT: String = run_command("git",  vec!["rev-parse", "--short", "HEAD"]).replace("\n", "");
 
-    static ref VERSION_STRING: String = get_version_string();   
+    pub static ref VERSION_STRING: String = get_version_string();   
 }
 
 
@@ -18,7 +18,7 @@ lazy_static::lazy_static! {
 // }
 
 pub(crate) fn write_version() {
-    println!("rust-assets v.{}", VERSION_STRING.as_str())
+    println!("rust-assets v{}", VERSION_STRING.as_str())
 }
 
 
