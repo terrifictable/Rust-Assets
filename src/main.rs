@@ -1,10 +1,9 @@
-#[allow(unused)]
-
 mod compress;
+
 
 fn main() {
 
-    let data = compress::generate_dir_assets("test");
-    println!("{}", data);
+    let dirs = vec!["test"];
+    compress::create_assets_file(dirs, "test");
 
 }
