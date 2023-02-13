@@ -1,4 +1,4 @@
-use std::{fs, io::{BufReader, Read, Write}};
+use std::{fs, io::{BufReader, Read, Write}, ops::Add};
 use base64::{Engine as _, engine::general_purpose};
 
 
@@ -47,8 +47,6 @@ pub fn get_asset(name: &str) -> String {
     String::from_utf8_lossy(&contents).to_string()
 }".to_string();
 
-    println!("{}", data);
-
-    let mut file = fs::File::create(&(output_file.to_string() + &".rs")).expect(format!("Failed to create output file '{}'", output_file).as_str());
+    let mut file = fs::File::create(&(output_file.to_string().replace(".rs", "").add(".rs"))).expect(format!("Failed to create output file '{}'", output_file).as_str());
     file.write_all(data.as_bytes()).unwrap();
 }
